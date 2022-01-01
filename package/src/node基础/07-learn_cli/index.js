@@ -3,14 +3,19 @@
 
 // commander.js 
 const program = require("commander")
+const createCommanders = require("./lib/core/create")
 const helpOptions = require("./lib/core/help")
-console.log("coder 狂想曲")
+
+
+// console.log("coder 狂想曲")
 const version = require('./package.json').version
-program.version(version)
-// 可选信息
+// program.version(version)
+
+createCommanders()
+// 
 helpOptions()
 
 // 对控制台参数进行解析
 program.parse(process.argv)
 
-console.log(program.dest)
+// console.log(program.dest)
