@@ -2,8 +2,10 @@
 const { promisify } = require("util")
 const download = promisify(require("download-git-repo"));
 const open = require("open");
+const path = require("path")
 const { vueRepo } = require("../config/repo-config")
 const { commandSpawn } = require("../utils/terminal")
+const { compile, writeToFile } = require("../utils/utils")
 
 const createProjectAction = async (project) => {
   /**
@@ -26,6 +28,57 @@ const createProjectAction = async (project) => {
   open("http://localhost:8080/")
 }
 
+const addCpnAction = async (name, dest) => {
+  /**
+   * 1. 有对应的ejs模版
+   * 2. 编译ejs模版 获取result
+   * 3. 将result 写入到vue文件
+   * 4. 将vue文件放入对应的文件夹
+   * 
+  */
+  // 1.编译ejs模板 result
+  const result = await compile("components.vue.ejs", {name, lowerName: name.toLowerCase()});
+
+  // 2.写入文件的操作
+  const targetPath = path.resolve(dest, `${name}.vue`);
+  
+  writeToFile(targetPath, result);
+}
+
+const addPageAndRouteAction = async (name, dest) => {
+  // 1.编译ejs模板
+  const data = {name, lowerName: name.toLowerCase()};
+  const pageResult = await compile('vue-component.ejs', data);
+  const routeResult = await compile('vue-router.ejs', data);
+
+  // 3.写入文件
+  const targetDest = path.resolve(dest, name.toLowerCase());
+  if (createDirSync(targetDest)) {
+    const targetPagePath = path.resolve(targetDest, `${name}.vue`);
+    const targetRoutePath = path.resolve(targetDest, 'router.js')
+    writeToFile(targetPagePath, pageResult);
+    writeToFile(targetRoutePath, routeResult);
+  }
+}
+
+const addStoreAction = async (name, dest) => {
+  // 1.遍历的过程
+  const storeResult = await compile('vue-store.ejs', {});
+  const typesResult = await compile('vue-types.ejs', {});
+
+  // 2.创建文件
+  const targetDest = path.resolve(dest, name.toLowerCase());
+  if (createDirSync(targetDest)) {
+    const targetPagePath = path.resolve(targetDest, `${name}.js`);
+    const targetRoutePath = path.resolve(targetDest, 'types.js')
+    writeToFile(targetPagePath, storeResult);
+    writeToFile(targetRoutePath, typesResult);
+  }
+}
+
 module.exports = {
-  createProjectAction
+  addCpnAction,
+  createProjectAction,
+  addPageAndRouteAction, 
+  addStoreAction
 }
