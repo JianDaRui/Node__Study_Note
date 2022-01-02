@@ -5,7 +5,7 @@ const open = require("open");
 const path = require("path")
 const { vueRepo } = require("../config/repo-config")
 const { commandSpawn } = require("../utils/terminal")
-const { compile, writeToFile } = require("../utils/utils")
+const { compile, writeToFile, createDirSync } = require("../utils/utils")
 
 const createProjectAction = async (project) => {
   /**
