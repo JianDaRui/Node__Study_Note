@@ -31,6 +31,6 @@ console.log('script end')
 // async2
 // promise1
 // script end
-// aysnc1 end
+// async1 end
 // promise2
-// setToueout
+// setTimeout
