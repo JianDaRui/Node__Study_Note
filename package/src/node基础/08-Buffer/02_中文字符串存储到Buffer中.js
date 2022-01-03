@@ -11,5 +11,6 @@ const message = "你好啊，李银河";
 
 // 2.编码使用utf16le, 解码使用utf8
 const buffer = Buffer.from(message, 'utf16le');
+// 默认使用utf8进行解码
 console.log(buffer);
 console.log(buffer.toString('utf16le'));
