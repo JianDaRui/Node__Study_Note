@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
       req.on('data', (data) => {
         body += data;
       });
-
+      // 请求结束 开始处理数据
       req.on('end', () => {
         console.log(body);
         // 处理body
