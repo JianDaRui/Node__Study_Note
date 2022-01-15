@@ -4,9 +4,10 @@ const mysql = require('mysql2');
 const connections = mysql.createPool({
   host: 'localhost',
   port: 3306,
-  database: 'coderhub',
+  database: 'amoshub',
   user: 'root',
-  password: 'Coderwhy888.',
+  password: 'coder8888.',
+  // 设置连接池限制
   connectionLimit: 10
 });
 

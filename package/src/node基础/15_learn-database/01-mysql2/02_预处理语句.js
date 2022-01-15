@@ -4,9 +4,9 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
-  database: 'coderhub',
+  database: 'amoshub',
   user: 'root',
-  password: 'Coderwhy888.'
+  password: 'coder8888.'
 });
 
 // 2.执行SQL语句
