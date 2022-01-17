@@ -4,7 +4,7 @@ const sequelize = new Sequelize('coderhub', 'root', 'coder888.', {
   host: 'localhost',
   dialect: 'mysql'
 });
-
+// 权限
 sequelize.authenticate().then(() => {
   console.log("连接数据库成功~");
 }).catch(err => {
