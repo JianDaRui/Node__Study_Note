@@ -32,7 +32,7 @@ node 诞生于09年3月份，距今已经有13年的历史。作者是Ryan Dahl
 
 为JavaScript创建了一片新的天地，不仅限于浏览器环境，可以让其运行于服务端。为前端工程师创造了更多话语权。
 
-![Chrome & Node组件构成图](/Users/xuguorui/study/JDR_Blog/images/555379-20190629130037468-2026745204.jpeg)
+![](images/555379-20190629130037468-2026745204.jpeg))
 
 
 
@@ -69,7 +69,7 @@ fs.readFile('/path', function(err, file) {
 console.log("发起读取文件")
 ```
 
-![异步调用](/Users/xuguorui/study/JDR_Blog/images/screenshot-20220103-145443.png)
+![异步调用](images/screenshot-20220103-145443.png)
 
 
 
